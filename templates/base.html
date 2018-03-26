@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>imageX</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <script type="text/javascript">
+            function readURL(input) {
+            if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#up-img')
+                                .attr('src', e.target.result)
+                                .attr('style', 'display: block')
+                                .width(600);
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+    	<div class="container-fluid" id="nav_fluid">
+    		<div class="navbar-header">
+      			<h1 class="logo">imageX</h1>
+      		</div>
+    		<div class="collapse navbar-collapse" id="myNavbar">
+          		<ul class="nav navbar-nav navbar-right">
+            		<li id="logout"><a href="#logout" id="logout-text">Logout</a></li>
+      				<div class="col-sm-4">
+        				<div class="thumbnail" >
+          					<img class="profilepic" src="profile.jpg" >
+       					</div>
+      				</div>
+          		</ul>
+        	</div>
+        </div>
+    	</nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
