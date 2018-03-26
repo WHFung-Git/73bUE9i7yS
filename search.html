@@ -6,59 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <style>
-  	.logo{
-  		margin-top: 80px;
-  	}
-  	.navbar-nav{
-  		margin-top: 15px;
+    .logo{
+      margin-top: 80px;
+    }
+    .navbar-nav{
+      margin-top: 15px;
 
-  	}
-  	.navbar-nav>li>a{
-  		padding-top: 80px
-  	}
-  	.navbar{
-  		height: 160px;
-  	}
+    }
+    .navbar-nav>li>a{
+      padding-top: 80px
+    }
+    .navbar{
+      height: 160px;
+    }
 
-  	#nav_fluid, .navbar-header, .navbar-right, #logout, .col-sm-4, .thumbnail{
-  		height: 160px;
-  	}
+    #nav_fluid, .navbar-header, .navbar-right, #logout, .col-sm-4, .thumbnail{
+      height: 160px;
+    }
 
-  	.col-sm-4{
-  		padding-right: 25px;
-  		width: 160px;
-  		height: 160px;
-  	}
+    .col-sm-4{
+      padding-right: 25px;
+      width: 160px;
+      height: 160px;
+    }
 
-	#logout-text{
-		font-size: 24px;
-	}
-	#up-img{
-		display: block;
-   		margin-left: auto;
-   		margin-right: auto;
-	}
-	textarea{
-		resize: none;
-	}
-	#up-button{
-		padding-left: 120px;
-	}
-	#img-preview{
-		height: 600px;
-	}
-	#img-detail-left{
-		float:left;
-		padding-left: 100px;
-	}
-	#img-detail-right{
-		padding-right: 100px;
-    	vertical-align: top;
-    	display:inline-block;
-	}
-	.submit-button{
-		float: left;
-	}
+  #logout-text{
+    font-size: 24px;
+  }
+  #up-img{
+    display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  textarea{
+    resize: none;
+  }
+  #up-button{
+    padding-left: 120px;
+  }
+  #img-preview{
+    height: 600px;
+  }
+  #img-detail-left{
+    float:left;
+    padding-left: 100px;
+  }
+  #img-detail-right{
+    padding-right: 100px;
+      vertical-align: top;
+      display:inline-block;
+  }
+  .submit-button{
+    float: left;
+  }
   div.gallery {
     margin: 5px;
     border: 1px solid #ccc;
@@ -84,7 +84,7 @@
   }
   </style>
   <script type="text/javascript">
-  	function readURL(input) {
+    function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
@@ -104,47 +104,46 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-default">
-	<div class="container-fluid" id="nav_fluid">
-		<div class="navbar-header">
-  			<h1 class="logo">imageX</h1>
-  		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-      		<ul class="nav navbar-nav navbar-right">
-        		<li id="logout"><a href="#logout" id="logout-text">Logout</a></li>
-  				<div class="col-sm-4">
-    				<div class="thumbnail" >
-      					<img class="profilepic" src="profile.jpg" >
-   					</div>
-  				</div>
-      		</ul>
-    	</div>
-    	</div>
-	</nav>
-	<div id="search-bar" class="container text-center">
-		<form id="search-form" action="search.py">
+  <nav class="navbar navbar-default">
+  <div class="container-fluid" id="nav_fluid">
+    <div class="navbar-header">
+        <h1 class="logo">imageX</h1>
+      </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li id="logout"><a href="#logout" id="logout-text">Logout</a></li>
+          <div class="col-sm-4">
+            <div class="thumbnail" >
+                <img class="profilepic" src="profile.jpg" >
+            </div>
+          </div>
+          </ul>
+      </div>
+      </div>
+  </nav>
+  <form id="search-form" action="search.py" method="POST">
+    <div id="search-bar" class="container text-center">
       <button type="button" onclick="location.href='upload.html'" class="float-left submit-button">Upload Image</button>
-			<input type="text" id="search-field">
-			<select name="search-type">
-    			<option value="image" selected>Image</option>
-    			<option value="gallery">Gallery</option>
-    			<option value="photography">Photographer</option>
-  			</select>
-  			<select name="search-sort">
-    			<option value="sort-1" selected>Most Popular</option>
-    			<option value="sort-2">Most Recent</option>
-  			</select>
-  			<input type="submit" value="Search">
-		</form>
-  </div>
-  <div id="search-result" class="container text-center">
-    <div id="cat-selector" class="container text-right">
-      <select name="cat-drop">
-        <option value="category1" selected>Category 1</option>
-        <option value="category2">Category 2</option>
-        <option value="category3">Category 3</option>
-      </select>
+      <input type="text" id="search-field" name="keyword">
+      <select name="search-type">
+          <option value="image" selected>Image</option>
+          <option value="gallery">Gallery</option>
+          <option value="photography">Photographer</option>
+        </select>
+        <select name="search-sort">
+          <option value="sort-1" selected>Most Popular</option>
+          <option value="sort-2">Most Recent</option>
+        </select>
+        <input type="submit" value="Search">
     </div>
+    <div id="search-result" class="container text-center">
+      <div id="cat-selector" class="container text-right">
+        <select name="cat-drop" onChange="document.forms['search-form'].submit();">
+          <option value="category1" selected>Category 1</option>
+          <option value="category2">Category 2</option>
+          <option value="category3">Category 3</option>
+        </select>
+      </div>
     <div id="searched-image" class="container text-center">
       <div class="gallery">
         <a target="_blank" href="mountain.jpg">
@@ -188,5 +187,6 @@
       </div>            
     </div>
   </div>
+  </form>
   </body>
   </html>
