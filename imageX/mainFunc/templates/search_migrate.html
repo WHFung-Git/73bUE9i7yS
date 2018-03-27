@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="search-bar" class="container text-center">
+    <form method="post">
+        {% csrf_token %}
+    <button type="button" onclick="location.href='upload.html'" class="float-left submit-button">Upload Image</button>
+        <input type="text" id="search-field" name="kw">
+        <select name="search-type">
+            <option value="image" selected>Image</option>
+            <option value="gallery">Gallery</option>
+            <option value="photography">Photographer</option>
+        </select>
+        <select name="sortBy">
+            <option value="sort_1" selected>Most Recent</option>
+            <option value="sort_2">Most Popular</option>
+        </select>
+        <input type="submit" value="Search">
+    <!-- </form> -->
+</div>
+<div id="search-result" class="container text-center">
+<div id="cat-selector" class="container text-right">
+    <!--<form method="post">
+        {% csrf_token %}-->
+    <select name="cat">
+        <option value="None" selected>All</option>
+        {% for cat in category %}
+            <option value="{{ cat.name }}">{{ cat.name }}</option>
+        {% endfor %}
+    </select>
+    </form>
+</div>
+<div id="searched-image" class="container text-center">
+</div>
+{% for photo in photos %}
+    <div class="gallery">
+        <a target="_blank" href="mountain.jpg">
+            <img src="{{ photo.imageFile.url }}" alt="{{ photo.title }}" width="300" height="200">
+        </a>
+        <div class="desc">{{ photo.description|linebreaksbr }}</div>
+    </div>
+{% empty %}
+    <p> No Matched Photos </p>
+{% endfor %}
+{% endblock %}

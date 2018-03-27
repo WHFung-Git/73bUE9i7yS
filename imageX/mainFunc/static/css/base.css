@@ -1,0 +1,69 @@
+.logo{
+    margin-top: 80px;
+}
+.navbar-nav{
+    margin-top: 15px;
+}
+.navbar-nav>li>a{
+    padding-top: 80px
+}
+.navbar{
+    height: 160px;
+}
+#nav_fluid, .navbar-header, .navbar-right, #logout, .col-sm-4, .thumbnail{
+    height: 160px;
+}
+.col-sm-4{
+    padding-right: 25px;
+    width: 160px;
+    height: 160px;
+}
+#logout-text{
+    font-size: 24px;
+}
+#up-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+textarea{
+    resize: none;
+}
+#up-button{
+    padding-left: 120px;
+}
+#img-preview{
+    height: 600px;
+}
+#img-detail-left{
+    float:left;
+    padding-left: 100px;
+}
+#img-detail-right{
+    padding-right: 100px;
+    vertical-align: top;
+    display:inline-block;
+}
+.submit-button{
+    float: left;
+}
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+div.gallery:hover {
+    border: 1px solid #777;
+}
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+#searched-image{
+    max-width: 1000px;
+}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content%}
+  <form id="search-form" action="search.py" method="POST">
+    <div id="search-bar" class="container text-center">
+      <button type="button" onclick=
+      {% if user.is_authenticated %}
+        " location.href='{% url 'upload' %}' "
+      {% else %}
+        "location.href='{% url 'login' %}'"
+      {% endif %}
+       class="float-left submit-button">Upload Image</button>
+      <input type="text" id="search-field" name="keyword">
+      <select name="search-type">
+          <option value="image" selected>Image</option>
+          <option value="gallery">Gallery</option>
+          <option value="photography">Photographer</option>
+        </select>
+        <select name="search-sort">
+          <option value="sort-1" selected>Most Popular</option>
+          <option value="sort-2">Most Recent</option>
+        </select>
+        <input type="submit" value="Search">
+    </div>
+  </form><br>
+  <div class="container text-center" id="img-slide-container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+  <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+         {% for p in sliderP %}
+         {% if forloop.first %}
+        <div class="item active">
+         {% else %}
+         <div class="item">
+         {% endif %}
+          <img src="{{ p.imageFile.url }}" alt="{{p.title}}">
+          <div class="carousel-caption">
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+  <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div class="container text-center" id="popular-image-container">
+    <h3 id="pop-img-text">Popular Images</h3>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Categroy 1</a></li>
+          <li><a href="#">Categroy 2</a></li>
+          <li><a href="#">Categroy 3</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+      <div id="searched-image" class="container text-center">
+    {% for photo in photos %}
+      <div class="gallery">
+        <a target="_blank" href="mountain.jpg">
+          <img src="{{ photo.imageFile.url }}" alt="{{ photo.title}}" width="300" height="200">
+        </a>
+        <div class="desc">{{ photo.description }}</div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}

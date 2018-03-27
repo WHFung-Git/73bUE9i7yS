@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>imageX</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/imageX.css' %}">
+        <script type="text/javascript">
+            function readURL(input) {
+            if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#up-img')
+                                .attr('src', e.target.result)
+                                .attr('style', 'display: block')
+                                .width(600);
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+    	<div class="container-fluid" id="nav_fluid">
+    		<div class="navbar-header">
+                <a href='{% url 'home' %}'>
+                    <h1 class="logo">imageX</h1>
+                </a>
+      		</div>
+    		<div class="collapse navbar-collapse" id="myNavbar">
+          		<ul class="nav navbar-nav navbar-right">
+                    <li> {{ user.username }} </li>
+                    {% if user.is_authenticated %}
+            		    <li id="logout"><a href="{% url 'logout' %}" id="logout-text">Logout</a></li>
+                    {% else %}
+                        <li id="login"><a href="{% url 'login' %}" id="logout-text">Login</a></li>
+                    {% endif %}
+      				<div class="col-sm-4">
+        				<div class="thumbnail" >
+          					<img class="profilepic" src="/" >
+       					</div>
+      				</div>
+          		</ul>
+        	</div>
+        </div>
+    	</nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
