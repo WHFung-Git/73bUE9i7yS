@@ -56,6 +56,8 @@
     float: left;
   }
   div.gallery {
+    width: 240px !important;
+    height: 240px !important;
     margin: 5px;
     border: 1px solid #ccc;
     float: left;
@@ -67,6 +69,10 @@
   }
 
   div.gallery img {
+    left: 0;
+    right: 0;
+    max-width: 238px;
+    max-height: 180px;
     width: 100%;
     height: auto;
   }
